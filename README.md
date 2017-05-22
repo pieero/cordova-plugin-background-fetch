@@ -19,7 +19,7 @@ The plugin creates the object `window.BackgroundFetch` with the methods `configu
 ### Command Line
 
 ```Bash
-   $ cordova plugin add cordova-plugin-background-fetch
+   $ cordova plugin add https://github.com/pieero/cordova-plugin-background-fetch
 ```
 
 ### PhoneGap Build

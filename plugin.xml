@@ -7,8 +7,8 @@
     <name>CDVBackgroundFetch</name>
     <description>Cordova Background Fetch Plugin</description>
     <license>MIT</license>
-    <repo>https://github.com/christocracy/cordova-plugin-background-fetch</repo>
-    <issue>https://github.com/christocracy/cordova-plugin-background-fetch/issues</issue>
+    <repo>https://github.com/pieero/cordova-plugin-background-fetch</repo>
+    <issue>https://github.com/pieero/cordova-plugin-background-fetch/issues</issue>
     <keywords>phonegap,cordova,background fetch</keywords>
 
     <engines>
@@ -41,4 +41,34 @@
         <header-file src="src/ios/CDVBackgroundFetch.h" />
     </platform>
 
+    <!-- android -->
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="BackgroundFetch" >
+                <param name="android-package" value="de.panko.cdvbackgroundfetchplugin.CDVBackgroundFetchPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+          <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+          <uses-permission android:name="android.permission.WAKE_LOCK" />
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver android:name="de.panko.cdvbackgroundfetchplugin.CDVBackgroundFetchReceiver" />
+            <receiver android:name="de.panko.cdvbackgroundfetchplugin.CDVBackgroundFetchBootReceiver">
+              <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+              </intent-filter>
+            </receiver>
+            <service android:name="de.panko.cdvbackgroundfetchplugin.CDVBackgroundFetchService" android:exported="false"/>
+        </config-file>
+        
+        <source-file src="src/android/CDVBackgroundFetchPlugin.java" target-dir="src/de/panko/cdvbackgroundfetchplugin/" />
+        <source-file src="src/android/CDVBackgroundFetchReceiver.java" target-dir="src/de/panko/cdvbackgroundfetchplugin/" />
+        <source-file src="src/android/CDVBackgroundFetchBootReceiver.java" target-dir="src/de/panko/cdvbackgroundfetchplugin/" />
+        <source-file src="src/android/CDVBackgroundFetchService.java" target-dir="src/de/panko/cdvbackgroundfetchplugin/" />
+    </platform>
+    
 </plugin>

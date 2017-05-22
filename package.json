@@ -5,12 +5,13 @@
   "cordova": {
     "id": "cordova-plugin-background-fetch",
     "platforms": [
+      "android",
       "ios"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/transistorsoft/cordova-plugin-background-fetch.git"
+    "url": "https://github.com/pieero/cordova-plugin-background-fetch.git"
   },
   "keywords": [
     "cordova",
